@@ -52,28 +52,7 @@
     </div>
 
     <div class="next-page-container">
-<button
-    type="button"
-    id="addToCartBtn"
-    onclick="fetch('/Sprint1Project/addCartItem', {
-                 method: 'POST',
-                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                 body: 'itemId=1'
-             })
-             .then(response => response.text())
-             .then(result => {
-                 console.log('Server response:', result);
-                 if (result.trim() === 'success') {
-                     alert('Item added to cart!');
-                 } else {
-                     alert('Failed to add item. Server said: ' + result);
-                 }
-             })
-             .catch(error => {
-                 alert('Error: ' + error);
-             });
-
-">
+<button>
     Next Page
 </button>
 
