@@ -13,5 +13,36 @@
     <servlet-name>CartItemServlet</servlet-name>
     <url-pattern>/addCartItem</url-pattern>
   </servlet-mapping>
-
+  <servlet>
+    <servlet-name>InitialCartItemServlet</servlet-name>
+    <servlet-class>com.nisum.controller.InitialCartItemServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InitialCartItemServlet</servlet-name>
+    <url-pattern>/getInitialCartItem</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ShoppingCartServlet</servlet-name>
+    <servlet-class>com.nisum.controller.ShoppingCartServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShoppingCartServlet</servlet-name>
+    <url-pattern>/getShoppingCart</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>UserAddress</servlet-name>
+    <servlet-class>com.nisum.controller.UserAddressesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserAddress</servlet-name>
+    <url-pattern>/UserAddress</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Restart</servlet-name>
+    <servlet-class>com.nisum.controller.RestartServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Restart</servlet-name>
+    <url-pattern>/Restart</url-pattern>
+  </servlet-mapping>
 </web-app>

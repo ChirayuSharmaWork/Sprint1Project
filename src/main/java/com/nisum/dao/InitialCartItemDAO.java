@@ -6,10 +6,10 @@ import com.nisum.util.DBconnection;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class CartItemDAO {
+public class InitialCartItemDAO {
 
     public void addItems(CartItem cartItem){
-        String query = "INSERT INTO CartItems VALUES ( ?, ? , ? , ? , ? , ?, ?, ?)";
+        String query = "INSERT INTO InitialCartItems VALUES ( ?, ? , ? , ? , ? , ?, ?, ?)";
         try {
             Connection con = new DBconnection().getConnection();
             PreparedStatement stm = con.prepareStatement(query);
@@ -28,16 +28,15 @@ public class CartItemDAO {
         }
     }
 
-    public CartItem getCartItemByCartItemID(Integer id){
-        String query = "SELECT * FROM CartItems WHERE cartItemID = ?";
+    public CartItem getCartItemByCartItemID(Integer id) {
+        String query = "SELECT * FROM InitialCartItems WHERE cartItemID = ?";
         try{
             Connection con = new DBconnection().getConnection();
             PreparedStatement stm = con.prepareStatement(query);
             stm.setInt(1,id);
             ResultSet rs = stm.executeQuery();
-            CartItem cartItem = null;
             if(rs.next()){
-                cartItem = new CartItem();
+                CartItem cartItem = new CartItem();
                 cartItem.setCartItemID(rs.getInt("CartItemID"));
                 cartItem.setCartID(rs.getInt("CartID"));
                 cartItem.setProductID(rs.getInt("ProductID"));
@@ -46,18 +45,19 @@ public class CartItemDAO {
                 cartItem.setUnitPrice(rs.getDouble("UnitPrice"));
                 cartItem.setDiscount(rs.getDouble("Discount"));
                 cartItem.setFinalPrice(rs.getDouble("FinalPrice"));
+                return cartItem;
             }
-            return cartItem; // Now returns null if not found!
+            return null;
         }catch(SQLException ex){
             ex.printStackTrace();
-            throw  new RuntimeException("Data is not inserted",ex);
+            throw  new RuntimeException("Data not found",ex);
         }
     }
 
 
     public ArrayList<CartItem> getCartItemsByCartID(Integer id){
         ArrayList<CartItem> list = new ArrayList<>();
-        String query = "SELECT * FROM CartItems WHERE cartID = ?";
+        String query = "SELECT * FROM InitialCartItems WHERE cartID = ?";
         try{
             Connection con = new DBconnection().getConnection();
             PreparedStatement stm = con.prepareStatement(query);
@@ -83,7 +83,7 @@ public class CartItemDAO {
     }
 
     public ArrayList<CartItem> getAllCartItems(){
-        String query = "SELECT * FROM CartItems";
+        String query = "SELECT * FROM InitialCartItems";
         ArrayList<CartItem> list = new ArrayList<>();
         try{
             Connection con = new DBconnection().getConnection();
@@ -109,7 +109,7 @@ public class CartItemDAO {
     }
 
     public void updateCartItem(CartItem cartItem){
-        String query = "UPDATE CartItems SET CartID   = ?, ProductID   = ?, \n" +
+        String query = "UPDATE InitialCartItems SET CartID   = ?, ProductID   = ?, \n" +
                 "    SKU   = ?, Quantity   = ?, UnitPrice   = ?, Discount   = ?, FinalPrice   = ? WHERE CartItemID  = ? ";
         try {
             Connection con = new DBconnection().getConnection();
@@ -130,7 +130,7 @@ public class CartItemDAO {
     }
 
     public void deleteCartItem(Integer cartItemID){
-        String query = "DELETE FROM CartItems WHERE CartItemID = ?";
+        String query = "DELETE FROM InitialCartItems WHERE CartItemID = ?";
         try{
             Connection con = new DBconnection().getConnection();
             PreparedStatement stm = con.prepareStatement(query);
@@ -143,24 +143,12 @@ public class CartItemDAO {
     }
 
     public void deleteCartItembyCartID(Integer cartid){
-        String query = "DELETE FROM CartItems WHERE CartID = ?";
+        String query = "DELETE FROM InitialCartItems WHERE CartID = ?";
         try{
             Connection con = new DBconnection().getConnection();
             PreparedStatement stm = con.prepareStatement(query);
             stm.setInt(1,cartid);
             stm.executeUpdate();
-        }catch (SQLException ex){
-            ex.printStackTrace();
-            throw  new RuntimeException("Data is not inserted",ex);
-        }
-    }
-
-    public void deleteAllCartItems(){
-        String query = "TRUNCATE CartItems";
-        try{
-            Connection con = new DBconnection().getConnection();
-            Statement stm = con.createStatement();
-            stm.executeUpdate(query);
         }catch (SQLException ex){
             ex.printStackTrace();
             throw  new RuntimeException("Data is not inserted",ex);

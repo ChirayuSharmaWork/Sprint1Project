@@ -8,25 +8,10 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class DBconnection {
-    private String url;
-    private String username;
-    private String password;
+    private final String url = "jdbc:mysql://localhost:3306/project";
+    private final String username = "root";
+    private final String password = "123456789";
 
-    public DBconnection() {
-        try (InputStream input = getClass().getClassLoader().getResourceAsStream("application.properties")) {
-            if (input == null) {
-                throw new RuntimeException("application.properties not found in classpath");
-            }
-            Properties prop = new Properties();
-            prop.load(input);
-
-            url = prop.getProperty("db.url");
-            username = prop.getProperty("db.username");
-            password = prop.getProperty("db.password");
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to load properties file", e);
-        }
-    }
 
     public Connection getConnection() {
         try {

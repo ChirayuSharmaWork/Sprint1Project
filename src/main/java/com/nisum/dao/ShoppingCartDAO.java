@@ -135,5 +135,16 @@ public class ShoppingCartDAO {
         }
     }
 
+    public void deleteAllShoppingCartItems(){
+        String query = "TRUNCATE ShoppingCart";
+        try{
+            Connection con = new DBconnection().getConnection();
+            Statement stm = con.createStatement();
+            stm.executeUpdate(query);
+        }catch (SQLException ex){
+            ex.printStackTrace();
+            throw  new RuntimeException("Data is not inserted",ex);
+        }
+    }
 
 }

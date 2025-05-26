@@ -10,7 +10,6 @@ import java.util.Date;
 
 public class CartItemService {
 
-
     private final Integer userid = 1;
     public void addCartItemToShoppingCart(CartItem cartItem){
         ShoppingCartDAO shoppingCartDAO = new ShoppingCartDAO();
