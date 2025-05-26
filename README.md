@@ -2,15 +2,23 @@
 
 1) Use GIT Clone to clone this repo to your system locally
 2) load this repo in your IntelliJ IDEA
+3) And then you can run this project
 
-## File Structure 
+## SQL FILES 
 
+### Initial CartItems
+<img width="550" alt="Screenshot 2025-05-26 at 11 32 53 AM" src="https://github.com/user-attachments/assets/492983f2-d056-4098-8eee-7b4a83f895f8" />
 
-<img width="488" alt="Screenshot 2025-05-25 at 9 31 09 AM" src="https://github.com/user-attachments/assets/27949b3c-43fe-4a13-a34c-809e8d7f2048" />
+### Selected Cart Items 
 
-1) index.jsp is the main page that will load when we start this webpage and all other html pages will be in pages folder and same goes for css, js, and images 
+<img width="572" alt="Screenshot 2025-05-26 at 11 35 04 AM" src="https://github.com/user-attachments/assets/9708c52b-c202-4859-ac69-b6e534c9abc9" />
 
-2) if you wanna connect your own database change application.properties to your local system values
-   
-<img width="388" alt="Screenshot 2025-05-25 at 9 33 53 AM" src="https://github.com/user-attachments/assets/ea90352e-3b2e-40ba-890d-b16d37f6e1c6" />
+### Shopping Cart
 
+<img width="386" alt="Screenshot 2025-05-26 at 11 34 48 AM" src="https://github.com/user-attachments/assets/0bec2a6a-dec6-4042-8345-c196c0312314" />
+
+### Addresses 
+
+<img width="586" alt="Screenshot 2025-05-26 at 11 34 34 AM" src="https://github.com/user-attachments/assets/e7ba27f0-cd42-46bb-9ae8-4077decc8d63" />
+
+### Selected cart item is empty as user need to select from Initial Cart Items 
